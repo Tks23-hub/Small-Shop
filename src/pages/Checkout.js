@@ -1,17 +1,30 @@
 import { useContext } from "react";
 import { CartContext } from "../CartContext";
 import CheckoutForm from "../components/Checkout";
-import "../styles/Checkout.css"; // Import styles
+import "../styles/Checkout.css"; 
 
 function Checkout() {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart, orders } = useContext(CartContext);
 
   const handleCheckout = (formData) => {
-    console.log("Order Details:", formData);
-    console.log("Cart Items:", cart);
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
 
+   
+    cart.forEach((item) => orders.push(item));
+
+    console.log("Orders Array:", orders); 
+
+    
+    setCart([]);
+
+   
     alert(`Thank you, ${formData.fullName}! Your order has been placed.`);
-    setCart([]); // Clear the cart after checkout
+    
+    
+    window.location.href = "/";
   };
 
   return (
