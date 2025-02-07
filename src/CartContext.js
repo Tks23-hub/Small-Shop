@@ -17,11 +17,11 @@ export function CartProvider({ children }) {
 
   const [orders, setOrders] = useState([]);
 
-  // ✅ Add function to update products list
+  
   const updateProducts = (updatedProducts) => {
-    setProducts([...updatedProducts]); // ✅ Correct way to update state
+    setProducts([...updatedProducts]); 
   };
-  // ✅ Define addProduct function
+  
 const addProduct = (product) => {
   setProducts((prevProducts) => [...prevProducts, product]);
 };

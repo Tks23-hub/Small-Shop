@@ -8,13 +8,13 @@ function Admin() {
   const [productId, setProductId] = useState("");
   const [productData, setProductData] = useState(null);
 
-  // ✅ Add Product Function
+ 
   const handleAddProduct = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
     const newProduct = {
-      id: Number(formData.get("id")), // Ensure ID is a number
+      id: Number(formData.get("id")), 
       name: formData.get("name"),
       price: Number(formData.get("price")),
       description: formData.get("description"),
@@ -26,42 +26,42 @@ function Admin() {
     event.target.reset();
   };
 
-  // ✅ Search for Product by ID
+ 
   const handleSearch = () => {
-    const id = Number(productId); // Convert input to number
-    console.log("Searching for product with ID:", id); // Debugging line
+    const id = Number(productId); 
+    console.log("Searching for product with ID:", id); 
 
     const product = products.find((p) => p.id === id);
-    console.log("Product found:", product); // Debugging line
+    console.log("Product found:", product); 
 
     if (product) {
-      setProductData({ ...product }); // ✅ Ensure state updates properly
+      setProductData({ ...product }); 
     } else {
       alert("Product not found.");
       setProductData(null);
     }
   };
 
-  // ✅ Update Product Function
+  
   const handleUpdateProduct = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
     const updatedProduct = {
-      id: productData.id, // Keep same ID
+      id: productData.id, 
       name: formData.get("name"),
       price: Number(formData.get("price")),
       description: formData.get("description"),
       image: formData.get("image"),
     };
 
-    console.log("Updating product:", updatedProduct); // Debugging line
+    console.log("Updating product:", updatedProduct); 
 
     const updatedProducts = products.map((p) =>
       p.id === updatedProduct.id ? updatedProduct : p
     );
 
-    setProducts(updatedProducts); // ✅ Correct way to update state
+    setProducts(updatedProducts); 
     alert(`Product "${updatedProduct.name}" updated successfully!`);
     setProductData(null);
     setProductId("");
@@ -71,15 +71,15 @@ function Admin() {
     <div className="admin-container">
       <h1>Admin Panel</h1>
 
-      {/* ✅ Side Panel with Buttons */}
+      
       <div className="admin-sidebar">
         <button onClick={() => setSelectedOption("add")}>➕ Add Product</button>
         <button onClick={() => setSelectedOption("edit")}>✏️ Edit Product</button>
       </div>
 
-      {/* ✅ Content Section */}
+      
       <div className="admin-content">
-        {/* Add Product Form */}
+        
         {selectedOption === "add" && (
           <div className="admin-form-container">
             <h2>Add New Product</h2>

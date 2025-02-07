@@ -2,18 +2,18 @@ import { createBrowserRouter, RouterProvider, Outlet, useParams,  useNavigate } 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import { useEffect } from "react"; // ✅ Correct!
+import { useEffect } from "react"; 
 import Checkout, { action as checkoutAction } from "./pages/Checkout";
 import Admin from "./pages/Admin";
 import { CartProvider } from "./CartContext";
 
 function RootLayout() {
-  const { role } = useParams(); // ✅ Extracts dynamic role parameter
+  const { role } = useParams(); 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (role === "admin") {
-      navigate("/admin"); // Redirect to admin if role is "admin"
+      navigate("/admin"); 
       
     }
   }, [role, navigate]);
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/cart", element: <Cart /> },
       { path: "/checkout", element: <Checkout />, action: checkoutAction },
-      { path: "/admin", element: <Admin /> }, // ✅ Dynamic path "/panel/admin"
+      { path: "/admin", element: <Admin /> }, 
     ],
   },
 ]);

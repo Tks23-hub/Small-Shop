@@ -5,7 +5,7 @@ function ProductPage({ products }) {
   const { cart = [], setCart } = useContext(CartContext);
 
   const addToCart = (product) => {
-    setCart([...cart, product]); // Add product to cart
+    setCart([...cart, product]); 
   };
 
   return (
@@ -26,7 +26,7 @@ function ProductPage({ products }) {
 const styles = {
   container: {
     display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)", // Ensures exactly 4 cards per row
+    gridTemplateColumns: "repeat(4, 1fr)", 
     gap: "20px",
     padding: "20px",
     justifyContent: "center",
