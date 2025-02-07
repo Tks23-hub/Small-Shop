@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Admin from "./pages/Admin";
 import Checkout from "./pages/Checkout";
+// import Footer from "./components/Footer";
 import { CartProvider } from "./CartContext";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
+         {/* <Footer /> Uncomment later  */}
       </Router>
     </CartProvider>
   );
