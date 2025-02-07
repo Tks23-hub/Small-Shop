@@ -1,31 +1,41 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { Form, useActionData, useNavigate } from "react-router-dom"; 
 import { CartContext } from "../CartContext";
-import CheckoutForm from "../components/Checkout";
-import "../styles/Checkout.css"; 
+import "../styles/Checkout.css";
+
+export function action({ request }) {
+  return request.formData().then((formData) => {
+    return {
+      customer: formData.get("fullName"),
+      address: formData.get("address"),
+      idNumber: formData.get("idNumber"),
+    };
+  });
+}
 
 function Checkout() {
-  const { cart, setCart, orders } = useContext(CartContext);
+  const { cart, setCart, orders, setOrders } = useContext(CartContext);
+  const orderData = useActionData();
+  const navigate = useNavigate(); 
 
-  const handleCheckout = (formData) => {
-    if (cart.length === 0) {
-      alert("Your cart is empty!");
-      return;
+  useEffect(() => {
+    if (orderData && cart.length > 0) {
+      
+      setOrders([...orders, { customer: orderData.customer, items: [...cart] }]);
+
+     
+      console.log("Updated Orders Array:", orders);
+
+      
+      setCart([]);
+
+      
+      alert(`Thank you, ${orderData.customer}! Your order has been placed.`);
+
+      
+      navigate("/");
     }
-
-   
-    cart.forEach((item) => orders.push(item));
-
-    console.log("Orders Array:", orders); 
-
-    
-    setCart([]);
-
-   
-    alert(`Thank you, ${formData.fullName}! Your order has been placed.`);
-    
-    
-    window.location.href = "/";
-  };
+  }, [orderData, cart, setCart, setOrders, orders, navigate]); 
 
   return (
     <div className="checkout-container">
@@ -45,10 +55,22 @@ function Checkout() {
             ))}
           </ul>
         )}
-        <h3>Total: ${cart.reduce((total, item) => total + item.price, 0)}</h3>
       </div>
 
-      <CheckoutForm onSubmit={handleCheckout} />
+      <Form method="post" className="checkout-form">
+        <h2>Checkout Details</h2>
+
+        <label>Full Name:</label>
+        <input type="text" name="fullName" required />
+
+        <label>Address:</label>
+        <input type="text" name="address" required />
+
+        <label>ID Number:</label>
+        <input type="text" name="idNumber" required />
+
+        <button type="submit">Complete Purchase</button>
+      </Form>
     </div>
   );
 }
