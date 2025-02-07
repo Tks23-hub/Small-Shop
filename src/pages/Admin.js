@@ -104,7 +104,7 @@ function Admin() {
           </div>
         )}
 
-        {/* Edit Product Section */}
+        
         {selectedOption === "edit" && (
           <div className="admin-form-container">
             <h2>Edit Product</h2>
