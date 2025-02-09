@@ -1,15 +1,18 @@
 import { useContext } from "react";
 import { CartContext } from "../CartContext";
 import ProductPage from "../components/ProductPage";
-import "../styles/Home.css"; 
+import "../styles/Home.css";
 
 function Home() {
-  const { products } = useContext(CartContext); 
+  const { products } = useContext(CartContext);
 
   return (
     <div className="home-container">
-      <h1 className="shop-title">Welcome to My Shop</h1>
-      <ProductPage products={products} />
+      <h1 className="shop-title">Supermarket</h1>
+      {/* Centered scrollable product section */}
+      <div className="product-scroll-container">
+        <ProductPage products={products} />
+      </div>
     </div>
   );
 }

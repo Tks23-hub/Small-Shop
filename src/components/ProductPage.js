@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../CartContext";
+import "../styles/ProductPage.css"; 
 
 function ProductPage({ products }) {
   const { cart = [], setCart } = useContext(CartContext);
@@ -9,59 +10,18 @@ function ProductPage({ products }) {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="product-container">
       {products.map((product) => (
-        <div key={product.id} style={styles.box}>
-          <img src={product.image} alt={product.name} style={styles.image} />
-          <h3>{product.name}</h3>
-          <p>{product.description}</p>
-          <p>Price: ${product.price}</p>
-          <button onClick={() => addToCart(product)} style={styles.button}>Add to Cart</button>
+        <div key={product.id} className="product-box">
+          <img src={product.image} alt={product.name} className="product-image" />
+          <h3 className="product-name">{product.name}</h3>
+          <p className="product-description">{product.description}</p>
+          <p className="product-price">${product.price}</p>
+          <button onClick={() => addToCart(product)} className="add-to-cart">Add to Cart</button>
         </div>
       ))}
     </div>
   );
 }
-
-const styles = {
-  container: {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)", 
-    gap: "20px",
-    padding: "20px",
-    justifyContent: "center",
-  },
-  box: {
-    border: "3px solid black",
-    padding: "15px",
-    borderRadius: "10px",
-    textAlign: "center",
-    backgroundColor: "cyan",
-    boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.2)",
-    transition: "transform 0.2s",
-    width: "250px",
-    height: "auto",
-    margin: "auto",
-  },
-  image: {
-    width: "100%",
-    height: "200px",
-    objectFit: "contain",
-    borderRadius: "8px",
-  },
-  button: {
-    padding: "10px",
-    backgroundColor: "blue",
-    color: "white",
-    border: "none",
-    cursor: "pointer",
-    fontWeight: "bold",
-    borderRadius: "5px",
-    marginTop: "10px",
-  },
-  boxHover: {
-    transform: "scale(1.05)",
-  },
-};
 
 export default ProductPage;
