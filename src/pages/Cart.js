@@ -36,7 +36,7 @@ function Cart() {
       )}
 
      
-      <h3 className="cart-total">Total: ${cart.reduce((total, item) => total + item.price, 0)}</h3>
+      <h3 className="cart-total">Total: ₪{cart.reduce((total, item) => total + item.price, 0)}</h3>
 
      
       <button className="checkout-button" onClick={() => navigate("/checkout")}>

@@ -3,6 +3,9 @@ import { Form, useActionData, useNavigate } from "react-router-dom";
 import { CartContext } from "../CartContext";
 import "../styles/Checkout.css";
 
+// Temporary orders array (not a state, just for logging)
+let orders = [];
+
 export function action({ request }) {
   return request.formData().then((formData) => {
     return {
@@ -14,28 +17,19 @@ export function action({ request }) {
 }
 
 function Checkout() {
-  const { cart, setCart, orders, setOrders } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
   const orderData = useActionData();
   const navigate = useNavigate(); 
 
   useEffect(() => {
     if (orderData && cart.length > 0) {
-      
-      setOrders([...orders, { customer: orderData.customer, items: [...cart] }]);
-
-     
-      console.log("Updated Orders Array:", orders);
-
-      
+      orders.push({ customer: orderData.customer, items: [...cart] });
+      console.log("Temporary Orders Array:", orders);
       setCart([]);
-
-      
       alert(`Thank you, ${orderData.customer}! Your order has been placed.`);
-
-      
       navigate("/");
     }
-  }, [orderData, cart, setCart, setOrders, orders, navigate]); 
+  }, [orderData, cart, setCart, navigate]);
 
   return (
     <div className="checkout-container">
@@ -50,7 +44,8 @@ function Checkout() {
             {cart.map((item, index) => (
               <li key={index}>
                 <img src={item.image} alt={item.name} width="50" />
-                {item.name} - ${item.price}
+                {item.name} - ₪{item.price}
+
               </li>
             ))}
           </ul>

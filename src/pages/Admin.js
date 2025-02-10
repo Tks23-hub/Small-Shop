@@ -4,7 +4,7 @@ import "../styles/Admin.css";
 
 function Admin() {
   const { products, setProducts, addProduct } = useContext(CartContext);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("add"); 
   const [productId, setProductId] = useState("");
   const [productData, setProductData] = useState(null);
 
@@ -14,7 +14,7 @@ function Admin() {
     const formData = new FormData(event.target);
 
     const newProduct = {
-      id: Number(formData.get("id")), 
+      id: Number(formData.get("id")),
       name: formData.get("name"),
       price: Number(formData.get("price")),
       description: formData.get("description"),
@@ -26,42 +26,44 @@ function Admin() {
     event.target.reset();
   };
 
- 
   const handleSearch = () => {
-    const id = Number(productId); 
-    console.log("Searching for product with ID:", id); 
-
+    const id = Number(productId);
+    console.log("Searching for product with ID:", id);
+    
     const product = products.find((p) => p.id === id);
-    console.log("Product found:", product); 
-
+    console.log("Product found:", product);
+  
     if (product) {
-      setProductData({ ...product }); 
+      setProductData(null); 
+      setTimeout(() => {
+        setProductData({ ...product });
+      }, 0); 
     } else {
       alert("Product not found.");
       setProductData(null);
     }
   };
-
+  
   
   const handleUpdateProduct = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
     const updatedProduct = {
-      id: productData.id, 
+      id: productData.id,
       name: formData.get("name"),
       price: Number(formData.get("price")),
       description: formData.get("description"),
       image: formData.get("image"),
     };
 
-    console.log("Updating product:", updatedProduct); 
+    console.log("Updating product:", updatedProduct);
 
     const updatedProducts = products.map((p) =>
       p.id === updatedProduct.id ? updatedProduct : p
     );
 
-    setProducts(updatedProducts); 
+    setProducts(updatedProducts);
     alert(`Product "${updatedProduct.name}" updated successfully!`);
     setProductData(null);
     setProductId("");
@@ -69,17 +71,9 @@ function Admin() {
 
   return (
     <div className="admin-container">
-      <h1>Admin Panel</h1>
-
       
-      <div className="admin-sidebar">
-        <button onClick={() => setSelectedOption("add")}>➕ Add Product</button>
-        <button onClick={() => setSelectedOption("edit")}>✏️ Edit Product</button>
-      </div>
-
       
       <div className="admin-content">
-        
         {selectedOption === "add" && (
           <div className="admin-form-container">
             <h2>Add New Product</h2>
@@ -104,7 +98,6 @@ function Admin() {
           </div>
         )}
 
-        
         {selectedOption === "edit" && (
           <div className="admin-form-container">
             <h2>Edit Product</h2>
@@ -140,6 +133,12 @@ function Admin() {
             )}
           </div>
         )}
+      </div>
+
+     
+      <div className="admin-sidebar">
+        <button onClick={() => setSelectedOption("add")}>Add a new product</button>
+        <button onClick={() => setSelectedOption("edit")}>Edit Product</button>
       </div>
     </div>
   );

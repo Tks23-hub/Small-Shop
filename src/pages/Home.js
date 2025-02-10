@@ -9,7 +9,6 @@ function Home() {
   return (
     <div className="home-container">
       <h1 className="shop-title">Supermarket</h1>
-      {/* Centered scrollable product section */}
       <div className="product-scroll-container">
         <ProductPage products={products} />
       </div>
