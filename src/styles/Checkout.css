@@ -12,6 +12,14 @@
   align-items: center;
 }
 
+.checkout-total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e74c3c;
+  text-align: right;
+  margin-top: 10px;
+}
+
 
 .cart-summary {
   background: linear-gradient(to right, #ffecd2, #fcb69f); 

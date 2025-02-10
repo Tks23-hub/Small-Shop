@@ -3,7 +3,7 @@ import { Form, useActionData, useNavigate } from "react-router-dom";
 import { CartContext } from "../CartContext";
 import "../styles/Checkout.css";
 
-// Temporary orders array (not a state, just for logging)
+
 let orders = [];
 
 export function action({ request }) {
@@ -21,6 +21,9 @@ function Checkout() {
   const orderData = useActionData();
   const navigate = useNavigate(); 
 
+  
+  const totalAmount = cart.reduce((total, item) => total + item.price, 0);
+
   useEffect(() => {
     if (orderData && cart.length > 0) {
       orders.push({ customer: orderData.customer, items: [...cart] });
@@ -35,23 +38,27 @@ function Checkout() {
     <div className="checkout-container">
       <h1>Checkout</h1>
 
+      
       <div className="cart-summary">
         <h2>Order Summary</h2>
         {cart.length === 0 ? (
           <p>Your cart is empty.</p>
         ) : (
-          <ul>
-            {cart.map((item, index) => (
-              <li key={index}>
-                <img src={item.image} alt={item.name} width="50" />
-                {item.name} - ₪{item.price}
-
-              </li>
-            ))}
-          </ul>
+          <>
+            <ul>
+              {cart.map((item, index) => (
+                <li key={index}>
+                  <img src={item.image} alt={item.name} width="50" />
+                  {item.name} - ₪{item.price}
+                </li>
+              ))}
+            </ul>
+            <h3 className="checkout-total">Total: ₪{totalAmount}</h3> 
+          </>
         )}
       </div>
 
+      
       <Form method="post" className="checkout-form">
         <h2>Checkout Details</h2>
 
