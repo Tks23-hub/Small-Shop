@@ -17,7 +17,6 @@ function RootLayout() {
       
     }
   }, [role, navigate]);
-
   return (
     <>
       <Navbar />
@@ -25,7 +24,6 @@ function RootLayout() {
     </>
   );
 }
-
 const router = createBrowserRouter([
   {
     path: "/",

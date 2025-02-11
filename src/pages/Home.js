@@ -5,7 +5,6 @@ import "../styles/Home.css";
 
 function Home() {
   const { products } = useContext(CartContext);
-
   return (
     <div className="home-container">
       <h1 className="shop-title">Supermarket</h1>

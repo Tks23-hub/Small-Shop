@@ -31,16 +31,12 @@ export function CartProvider({ children }) {
     { id: 24, name: "Yogurt", description: "Plain natural yogurt", price: 4, image: "/images/yogurt.jpg" }
   ]);
   const [orders, setOrders] = useState([]);
-
-  
   const updateProducts = (updatedProducts) => {
     setProducts([...updatedProducts]); 
   };
-  
 const addProduct = (product) => {
   setProducts((prevProducts) => [...prevProducts, product]);
 };
-
 
   return (
     <CartContext.Provider value={{ cart, setCart, products, setProducts, addProduct, orders, setOrders, updateProducts }}>

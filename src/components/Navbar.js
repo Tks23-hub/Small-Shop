@@ -7,8 +7,8 @@ function Navbar() {
         <Link to="/" style={styles.link}>Shop</Link>
       </div>
       <div style={styles.right}>
-        <Link to="/cart" style={styles.link}>🛒 Cart</Link>
-        <Link to="/admin" style={styles.link}>🔑 Admin</Link>
+        <Link to="/cart" style={styles.link}> Cart</Link>
+        <Link to="/admin" style={styles.link}>Admin Page</Link>
       </div>
     </nav>
   );
