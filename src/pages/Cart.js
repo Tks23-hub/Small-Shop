@@ -20,10 +20,10 @@ function Cart() {
 
   return (
     <div className="cart-container">
-      <h1 className="cart-title">Shopping Cart</h1>
-      {cart.length === 0 ? (
+      {/* <h1 className="cart-title">Shopping Cart</h1> */}
+      {/* {cart.length === 0 ? (
         <p className="empty-cart">Your cart is empty.</p>
-      ) : (
+      ) : ( */}
         <ul className="cart-list">
           {cart.map((item, index) => (
             <li key={index} className="cart-item">
@@ -42,7 +42,7 @@ function Cart() {
             </li>
           ))}
         </ul>
-      )}
+      {/* )} */}
       <h3 className="cart-total">
         Total: ₪{cart.reduce((total, item) => total + item.price, 0)}
       </h3>

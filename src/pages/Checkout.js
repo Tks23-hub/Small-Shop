@@ -23,6 +23,8 @@ function Checkout() {
     if (orderData && cart.length > 0) {
       orders.push({ customer: orderData.customer, items: [...cart] });
       setCart([]);
+      console.log(orders);
+      
       navigate("/");
     }
   }, [orderData, cart, setCart, navigate]);
