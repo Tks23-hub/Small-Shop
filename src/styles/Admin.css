@@ -1,13 +1,13 @@
-/* ✅ Main Layout */
+
 .admin-container {
   display: flex;
   flex-direction: row;
   height: 100vh;
   background-color: #f4f4f4;
-  padding-top: 60px; /* ✅ Space for Navbar */
+  padding-top: 60px; 
 }
 
-/* ✅ Admin Content (Takes most of the space) */
+
 .admin-content {
   flex-grow: 1;
   padding: 30px;
@@ -16,7 +16,7 @@
   align-items: center;
 }
 
-/* ✅ Sidebar (Moves to the FAR RIGHT) */
+
 .admin-sidebar {
   width: 250px;
   background-color: #2c3e50;
@@ -26,12 +26,12 @@
   align-items: center;
   position: fixed;
   right: 0;
-  top: 60px; /* ✅ Now starts BELOW the Navbar */
-  height: calc(100vh - 60px); /* ✅ Adjust height to avoid covering navbar */
+  top: 60px; 
+  height: calc(100vh - 60px);
   box-shadow: -3px 0 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ✅ Navbar Fix */
+
 .navbar {
   width: 100%;
   position: fixed;
@@ -39,13 +39,13 @@
   left: 0;
   background-color: #333;
   padding: 10px 20px;
-  z-index: 1000; /* ✅ Ensures navbar is above everything */
+  z-index: 1000; 
   display: flex;
   justify-content: space-between;
 }
 
 
-/* ✅ Sidebar Buttons */
+
 .admin-sidebar button {
   width: 100%;
   padding: 15px;
@@ -63,7 +63,7 @@
   background-color: #2980b9;
 }
 
-/* ✅ Admin Form Styling */
+
 .admin-form-container {
   width: 500px;
   background: white;
@@ -78,7 +78,7 @@
   gap: 10px;
 }
 
-/* ✅ Input Styling */
+
 .admin-form input {
   padding: 10px;
   border: 2px solid #ccc;
@@ -94,7 +94,7 @@
   box-shadow: 0px 0px 5px rgba(52, 152, 219, 0.5);
 }
 
-/* ✅ Buttons for Forms */
+
 .admin-form button {
   background-color: green;
   color: white;
@@ -110,7 +110,7 @@
   transform: scale(1.05);
 }
 
-/* ✅ Search Container */
+
 .search-container {
   display: flex;
   align-items: center;
@@ -137,4 +137,62 @@
 
 .search-container button:hover {
   background-color: #e67e22;
+}
+
+.edit-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: white;
+  background-color: #3498db;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  position: relative;
+  gap: 8px; 
+}
+
+
+.edit-button .search-input {
+  width: 100px;  
+  padding: 5px;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  opacity: 0.9;
+  background: white;
+  color: black;
+  text-align: center;
+}
+
+.edit-button .search-input:focus {
+  opacity: 1;
+  background-color: #fff;
+  border: 1px solid #2980b9;
+}
+
+
+.edit-button .search-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: white;
+  background-color: #e67e22;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+
+.edit-button:hover {
+  background-color: #2980b9;
+}
+
+.edit-button .search-btn:hover {
+  background-color: #d35400;
 }

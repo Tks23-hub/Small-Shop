@@ -69,7 +69,8 @@ function Admin() {
 
         {selectedOption === "edit" && (
           <div className="admin-form-container">
-            <h2>Edit Product</h2>
+            <h2>
+              Edit Product</h2>
             <div className="edit-button-container">
               <input
                 type="text"
@@ -100,9 +101,20 @@ function Admin() {
         )}
       </div>
 
+
       <div className="admin-sidebar">
         <button onClick={() => setSelectedOption("add")}>Add a new product</button>
-        <button onClick={() => setSelectedOption("edit")}>Edit Product</button>
+        <button className="edit-button" onClick={() => setSelectedOption("edit")}>
+    <span>Edit Product</span> 
+    <input
+      type="text"
+      placeholder="Enter ID"
+      value={productId}
+      onChange={(e) => setProductId(e.target.value)}
+      className="search-input"
+    />
+    <button className="search-btn" onClick={handleSearch}>Search</button>
+  </button>
       </div>
     </div>
   );
