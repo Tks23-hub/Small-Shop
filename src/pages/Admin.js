@@ -43,16 +43,13 @@ function Admin() {
     setProductData(null);
     setProductId("");
   };
-  
-
   return (
     <div className="admin-container">
       <div className="admin-content">
         {selectedOption === "add" && (
           <div className="admin-form-container">
-            <h2>Add New Product</h2>
             <form onSubmit={handleAddProduct} className="admin-form">
-              <label>Product ID:</label>
+              <label>ID:</label>
               <input type="text" name="id" required />
               <label>Name:</label>
               <input type="text" name="name" required />
@@ -62,7 +59,7 @@ function Admin() {
               <input type="text" name="description" required />
               <label>Image URL:</label>
               <input type="text" name="image" required />
-              <button type="submit">Add Product</button>
+              <button type="submit">Add</button>
             </form>
           </div>
         )}
@@ -81,7 +78,6 @@ function Admin() {
               />
               <button onClick={handleSearch}>Search</button>
             </div>
-
             {productData && (
               <form onSubmit={handleUpdateProduct} className="admin-form">
                 <label>Product ID:</label>
@@ -100,8 +96,6 @@ function Admin() {
           </div>
         )}
       </div>
-
-
       <div className="admin-sidebar">
         <button onClick={() => setSelectedOption("add")}>Add product</button>
         <button className="edit-button" onClick={() => setSelectedOption("edit")}>

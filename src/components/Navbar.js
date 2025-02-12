@@ -6,13 +6,16 @@ function Navbar() {
       <div style={styles.left}>
         <Link to="/" style={styles.link}>Store</Link>
       </div>
+      <div style={styles.center}>
+        <Link to="/cart" style={styles.link}>My Cart</Link>
+      </div>
       <div style={styles.right}>
-        <Link to="/cart" style={styles.link}> My Cart</Link>
         <Link to="/admin" style={styles.link}>Admin Page</Link>
       </div>
     </nav>
   );
 }
+
 const styles = {
   navbar: {
     display: "flex",
@@ -21,6 +24,7 @@ const styles = {
     backgroundColor: "orange",
   },
   left: { fontSize: "20px", color: "white" },
+  center: { flex: 1, textAlign: "center" },
   right: { display: "flex", gap: "15px" },
   link: { color: "black", textDecoration: "none", fontSize: "18px" }
 };
