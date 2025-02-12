@@ -2,14 +2,15 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevents the page from scrolling */
+  background-color: lightgreen;
+  overflow: hidden; 
 }
 
 .admin-container {
   display: flex;
   flex-direction: row;
   height: 100vh;
-  background-color: #f4f4f4;
+
   padding-top: 60px; 
 }
 
@@ -29,12 +30,9 @@ html, body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* position: fixed; */
   right: 0;
-  /* top: 60px;  */
-  /* height: calc(100vh - 60px); */
   box-shadow: -3px 0 8px rgba(0, 0, 0, 0.2);
+  height: 150px;
 }
 
 
@@ -49,8 +47,6 @@ html, body {
   display: flex;
   justify-content: space-between;
 }
-
-
 
 .admin-sidebar button {
   width: 100%;
@@ -69,7 +65,6 @@ html, body {
   background-color: #2980b9;
 }
 
-
 .admin-form-container {
   width: 500px;
   background: cyan;
@@ -85,7 +80,6 @@ html, body {
   gap: 10px;
 }
 
-
 .admin-form input {
   padding: 10px;
   border: 2px solid #ccc;
@@ -94,13 +88,11 @@ html, body {
   width: 100%;
   transition: 0.3s;
 }
-
 .admin-form input:focus {
   border-color: #3498db;
   outline: none;
   box-shadow: 0px 0px 5px rgba(52, 152, 219, 0.5);
 }
-
 
 .admin-form button {
   background-color: green;
@@ -116,7 +108,6 @@ html, body {
   background-color: darkgreen;
   transform: scale(1.05);
 }
-
 
 .search-container {
   display: flex;
@@ -162,8 +153,6 @@ html, body {
   position: relative;
   gap: 8px; 
 }
-
-
 .edit-button .search-input {
   width: 100px;  
   padding: 5px;
@@ -176,14 +165,11 @@ html, body {
   color: black;
   text-align: center;
 }
-
 .edit-button .search-input:focus {
   opacity: 1;
   background-color: #fff;
   border: 1px solid #2980b9;
 }
-
-
 .edit-button .search-btn {
   padding: 5px 10px;
   font-size: 12px;
@@ -194,12 +180,9 @@ html, body {
   border-radius: 4px;
   transition: 0.3s;
 }
-
-
 .edit-button:hover {
   background-color: #2980b9;
 }
-
 .edit-button .search-btn:hover {
   background-color: #d35400;
 }

@@ -24,7 +24,6 @@ function Checkout() {
       orders.push({ customer: orderData.customer, items: [...cart] });
       setCart([]);
       console.log(orders);
-      
       navigate("/");
     }
   }, [orderData, cart, setCart, navigate]);
@@ -33,10 +32,6 @@ function Checkout() {
     <div className="checkout-container">
       <h1>Register</h1>
       <div className="cart-summary">
-        {/* <h2>Order Summary</h2> */}
-        {cart.length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
           <>
             <ul>
               {cart.map((item, index) => (
@@ -50,7 +45,6 @@ function Checkout() {
             </ul>
             <h3 className="checkout-total">Your Total: ₪{totalAmount}</h3> 
           </>
-        )}
       </div>
       <Form method="post" className="checkout-form">
         <h2>Checkout Details</h2>

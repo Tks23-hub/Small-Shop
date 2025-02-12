@@ -7,7 +7,6 @@ function Home() {
   const { products } = useContext(CartContext);
   return (
     <div className="home-container">
-      {/* <h1 className="shop-title">Supermarket</h1> */}
       <div className="product-scroll-container">
         <ProductPage products={products} />
       </div>

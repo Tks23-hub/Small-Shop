@@ -103,7 +103,7 @@ function Admin() {
 
 
       <div className="admin-sidebar">
-        <button onClick={() => setSelectedOption("add")}>Add a new product</button>
+        <button onClick={() => setSelectedOption("add")}>Add product</button>
         <button className="edit-button" onClick={() => setSelectedOption("edit")}>
     <span>Edit Product</span> 
     <input
