@@ -29,9 +29,9 @@ function Checkout() {
 
   return (
     <div className="checkout-container">
-      <h1>Checkout</h1>
+      <h1>Register</h1>
       <div className="cart-summary">
-        <h2>Order Summary</h2>
+        {/* <h2>Order Summary</h2> */}
         {cart.length === 0 ? (
           <p>Your cart is empty.</p>
         ) : (
@@ -39,12 +39,14 @@ function Checkout() {
             <ul>
               {cart.map((item, index) => (
                 <li key={index}>
-                  <img src={item.image} alt={item.name} width="50" />
-                  {item.name} - ₪{item.price}
+                 
+                  {item.name} - ₪{item.price} <br></br>
+                  {item.description}
+                  
                 </li>
               ))}
             </ul>
-            <h3 className="checkout-total">Total: ₪{totalAmount}</h3> 
+            <h3 className="checkout-total">Your Total: ₪{totalAmount}</h3> 
           </>
         )}
       </div>

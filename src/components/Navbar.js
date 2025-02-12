@@ -13,13 +13,12 @@ function Navbar() {
     </nav>
   );
 }
-
 const styles = {
   navbar: {
     display: "flex",
     justifyContent: "space-between",
     padding: "10px 20px",
-    backgroundColor: "#333",
+    backgroundColor: "orange",
   },
   left: { fontSize: "20px", color: "white" },
   right: { display: "flex", gap: "15px" },

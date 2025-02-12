@@ -13,7 +13,8 @@
     border: 2px solid #222;
     border-radius: 10px;
     text-align: center;
-    background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+    /* background: linear-gradient(to bottom, #ffffff, #f8f8f8); */
+    background-color: orange;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
     padding: 15px;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -21,10 +22,10 @@
     height: auto;
 }
 
-.product-box:hover {
+/* .product-box:hover {
     transform: scale(1.05);
     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
-}
+} */
 
 .product-image {
     width: 100%;

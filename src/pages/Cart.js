@@ -29,7 +29,9 @@ function Cart() {
             <li key={index} className="cart-item">
               <div className="cart-item-details">
                 <span className="cart-item-name">{item.name}</span>
-                <span className="cart-item-price">₪{item.price}</span>
+               <span className="cart-item-price"> ₪{item.price}</span> <br></br>
+                <span className="cart-item-Description">{item.description}</span>
+                
               </div>
               <button
                 className="remove-button"
