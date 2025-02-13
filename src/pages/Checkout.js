@@ -8,7 +8,6 @@ export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData); 
   return {
-    customer: data.fullName,
     address: data.address,
     idNumber: data.idNumber,
   };
@@ -21,7 +20,7 @@ function Checkout() {
   const totalAmount = cart.reduce((total, item) => total + item.price, 0);
   useEffect(() => {
     if (orderData && cart.length > 0) {
-      orders.push({ customer: orderData.customer, items: [...cart] });
+      orders.push({  items: [...cart] });
       setCart([]);
       console.log(orders);
       navigate("/");
@@ -43,16 +42,16 @@ function Checkout() {
                 </li>
               ))}
             </ul>
-            <h3 className="checkout-total">Your Total: ₪{totalAmount}</h3> 
+            <h3 className="checkout-total"> Total: ₪{totalAmount}</h3> 
           </>
       </div>
       <Form method="post" className="checkout-form">
         <h2>Checkout Details</h2>
         <label>Address:</label>
         <input type="text" name="address" required />
-        <label>ID Number:</label>
+        <label>ID:</label>
         <input type="text" name="idNumber" required />
-        <button type="submit">Complete Purchase</button>
+        <button type="submit">Buy</button>
       </Form>
     </div>
   );

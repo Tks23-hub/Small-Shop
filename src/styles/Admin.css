@@ -95,13 +95,14 @@ html, body {
 }
 
 .admin-form button {
-  background-color: green;
+  background-color: black;
   color: white;
   padding: 12px;
   border: none;
   cursor: pointer;
   font-size: 16px;
   transition: background 0.3s, transform 0.2s;
+  width: auto;
 }
 
 .admin-form button:hover {

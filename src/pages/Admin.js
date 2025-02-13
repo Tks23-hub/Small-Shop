@@ -80,7 +80,7 @@ function Admin() {
             </div>
             {productData && (
               <form onSubmit={handleUpdateProduct} className="admin-form">
-                <label>Product ID:</label>
+                <label>ID:</label>
                 <input type="text" name="id" value={productData.id} readOnly />
                 <label>Name:</label>
                 <input type="text" name="name" defaultValue={productData.name} required />
@@ -90,7 +90,7 @@ function Admin() {
                 <input type="text" name="description" defaultValue={productData.description} required />
                 <label>Image URL:</label>
                 <input type="text" name="image" defaultValue={productData.image} required />
-                <button type="submit">Update Product</button>
+                <button type="submit">Update</button>
               </form>
             )}
           </div>
