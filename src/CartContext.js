@@ -1,8 +1,31 @@
 import { createContext, useState } from "react";
 
 export const CartContext = createContext();
+// createContext() creates a new React Context.
+// CartContext will act as a global store that holds:
+// Shopping Cart Items
+// Products
+// Orders
+// Functions to Modify Them
+// export allows us to import CartContext in other files.
+
+
+
 export function CartProvider({ children }) {
+//   A provider component wraps the entire app, making CartContext available to all child components.
+// { children } → Special React prop that represents all components wrapped inside <CartProvider>.
+// 🔹 Example Usage in App.js:
+// <CartProvider>
+//   <RouterProvider router={router} />
+// </CartProvider>
+// This means everything inside <CartProvider> can access CartContext.
+
+
   const [cart, setCart] = useState([]);
+//   cart → Stores an array of products added to the cart.
+// setCart → Updates the cart.
+
+
   const [products, setProducts] = useState([
     { id: 1, name: "Cereal", description: "Crunchy Frosted Flakes", price: 5, image: "/images/Cerial box.jpg" },
     { id: 2, name: "Chocolate", description: "Sweet Hershey chocolate bar", price: 4, image: "/images/chocolate.jpeg" },
@@ -41,5 +64,8 @@ const addProduct = (product) => {
     <CartContext.Provider value={{ cart, setCart, products, setProducts, addProduct, orders, setOrders, updateProducts }}>
       {children}
     </CartContext.Provider>
+// This wraps children components inside <CartContext.Provider>, making CartContext data available globally.
+// value={{ ... }} → Contains all shared values and functions.
+
   );
 }

@@ -5,14 +5,25 @@ import "../styles/Cart.css";
 
 function Cart() {
   const { cart, setCart } = useContext(CartContext);
+
+//   cart: Holds an array of products currently in the cart.
+// setCart: A function used to update the cart when items are added or removed.
+// This means the Cart component re-renders whenever cart is modified.
+
+
   const navigate = useNavigate();
+  
   const removeFromCart = (productId) => {
     setCart((prevCart) => {
       const indexToRemove = prevCart.findIndex((item) => item.id === productId);
       if (indexToRemove !== -1) {
         const updatedCart = [...prevCart];
-        updatedCart.splice(indexToRemove, 1); 
+        updatedCart.splice(indexToRemove, 1);
+        // it finds the products with that id all of them and deletes one  
+
         return updatedCart;
+        // After removing the item, the new cart array (updatedCart) is returned to setCart, updating the state.
+        
       }
       return prevCart;
     });

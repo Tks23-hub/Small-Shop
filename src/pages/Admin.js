@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../CartContext";
+import { useNavigate } from "react-router-dom";
 import "../styles/Admin.css";
 
 function Admin() {
@@ -7,7 +8,8 @@ function Admin() {
   const [selectedOption, setSelectedOption] = useState("add");
   const [productId, setProductId] = useState("");
   const [productData, setProductData] = useState(null);
-  
+  const navigate = useNavigate();
+
   const handleAddProduct = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -22,7 +24,7 @@ function Admin() {
     const id = Number(productId);
     const product = products.find((p) => p.id === id);
     if (product) {
-      setProductData(null); 
+      setProductData(null);
       setTimeout(() => {
         setProductData({ ...product });
       }, 0);
@@ -35,14 +37,16 @@ function Admin() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const updatedProduct = Object.fromEntries(formData.entries());
-    updatedProduct.id = Number(productData.id); 
+    updatedProduct.id = Number(productData.id);
     updatedProduct.price = Number(updatedProduct.price);
     const updatedProducts = products.map((p) =>
-      p.id === updatedProduct.id ? updatedProduct : p );
+      p.id === updatedProduct.id ? updatedProduct : p
+    );
     setProducts(updatedProducts);
     setProductData(null);
     setProductId("");
   };
+
   return (
     <div className="admin-container">
       <div className="admin-content">
@@ -59,15 +63,14 @@ function Admin() {
               <input type="text" name="description" required />
               <label>Image URL:</label>
               <input type="text" name="image" required />
-              <button type="submit">Add</button>
+              <button type="submit" onClick={() => navigate("/") }> Add </button>
             </form>
           </div>
         )}
 
         {selectedOption === "edit" && (
           <div className="admin-form-container">
-            <h2>
-              Edit Product</h2>
+            <h2>Edit Product</h2>
             <div className="edit-button-container">
               <input
                 type="text"
@@ -90,7 +93,7 @@ function Admin() {
                 <input type="text" name="description" defaultValue={productData.description} required />
                 <label>Image URL:</label>
                 <input type="text" name="image" defaultValue={productData.image} required />
-                <button type="submit">Update</button>
+                <button type="submit" onClick={() => navigate("/") }>Update</button>
               </form>
             )}
           </div>
@@ -99,16 +102,16 @@ function Admin() {
       <div className="admin-sidebar">
         <button onClick={() => setSelectedOption("add")}>Add product</button>
         <button className="edit-button" onClick={() => setSelectedOption("edit")}>
-    <span>Edit Product</span> 
-    <input
-      type="text"
-      placeholder="Enter ID"
-      value={productId}
-      onChange={(e) => setProductId(e.target.value)}
-      className="search-input"
-    />
-    <button className="search-btn" onClick={handleSearch}>Search</button>
-  </button>
+          <span>Edit Product</span>
+          <input
+            type="text"
+            placeholder="Enter ID"
+            value={productId}
+            onChange={(e) => setProductId(e.target.value)}
+            className="search-input"
+          />
+          <button className="search-btn" onClick={handleSearch}>Search</button>
+        </button>
       </div>
     </div>
   );

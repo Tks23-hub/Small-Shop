@@ -4,8 +4,10 @@ import { CartContext } from "../CartContext";
 import "../styles/Checkout.css";
 
 let orders = [];
+
 export async function action({ request }) {
   const formData = await request.formData();
+  // we have an await because this is a promise
   const data = Object.fromEntries(formData); 
   return {
     address: data.address,
@@ -18,9 +20,10 @@ function Checkout() {
   const orderData = useActionData();
   const navigate = useNavigate(); 
   const totalAmount = cart.reduce((total, item) => total + item.price, 0);
+
   useEffect(() => {
     if (orderData && cart.length > 0) {
-      orders.push({  items: [...cart] });
+      orders.push({ items: [...cart] });
       setCart([]);
       console.log(orders);
       navigate("/");
@@ -31,19 +34,17 @@ function Checkout() {
     <div className="checkout-container">
       <h1>Register</h1>
       <div className="cart-summary">
-          <>
-            <ul>
-              {cart.map((item, index) => (
-                <li key={index}>
-                 
-                  {item.name} - ₪{item.price} <br></br>
-                  {item.description}
-                  
-                </li>
-              ))}
-            </ul>
-            <h3 className="checkout-total"> Total: ₪{totalAmount}</h3> 
-          </>
+        <>
+          <ul>
+            {cart.map((item, index) => (
+              <li key={index}>
+                {item.name} - ₪{item.price} <br />
+                {item.description}
+              </li>
+            ))}
+          </ul>
+          <h3 className="checkout-total"> Total: ₪{totalAmount}</h3> 
+        </>
       </div>
       <Form method="post" className="checkout-form">
         <h2>Checkout Details</h2>
