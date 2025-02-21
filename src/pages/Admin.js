@@ -16,9 +16,18 @@ function Admin() {
     const newProduct = Object.fromEntries(formData.entries());
     newProduct.id = Number(newProduct.id);
     newProduct.price = Number(newProduct.price);
+    const existingProduct = products.find((p) => p.id === newProduct.id);
+    if (existingProduct) {
+      alert(`Product with ID ${newProduct.id} already exists! Please use a different ID.`);
+      event.target.reset(); 
+      return; 
+    }
     addProduct(newProduct);
-    event.target.reset();
-  };
+    event.target.reset(); 
+    navigate("/");
+};
+
+  
 
   const handleSearch = () => {
     const id = Number(productId);
@@ -63,7 +72,7 @@ function Admin() {
               <input type="text" name="description" required />
               <label>Image URL:</label>
               <input type="text" name="image" required />
-              <button type="submit" onClick={() => navigate("/") }> Add </button>
+              <button type="submit" > Add </button>
             </form>
           </div>
         )}
